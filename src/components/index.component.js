@@ -12,13 +12,14 @@ class Index extends Component {
 
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.newFruit) {
-			this.props.fruits.unshift(nextProps.newFruit);
+			this.props.fruitsList.unshift(nextProps.newFruit);
 		}
 	}
 
 	tabRow() {
-		return this.props.fruits.map(function (object, i) {
-			return <TableRow name={object.fruit_name} quantity={object.fruit_quantity} obj={object} key={i} />;
+		console.log(this.props);
+		return this.props.fruitsList.map(function (object, i) {
+			return <TableRow name={object.name} quantity={object.quantity} obj={object} key={i} />;
 		});
 	}
 
