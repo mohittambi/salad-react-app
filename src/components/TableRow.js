@@ -4,14 +4,13 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 class TableRow extends Component {
-
   constructor(props) {
     super(props);
     this.delete = this.delete.bind(this);
-    console.log(this.props);
   }
+
   delete() {
-    axios.get('http://localhost:4000/fruit/delete/' + this.props.obj._id)
+    axios.delete('http://localhost:8970/fruit/' + this.props.obj.id + '/delete/')
       .then(console.log('Deleted'))
       .catch(err => console.log(err))
   }
@@ -20,13 +19,13 @@ class TableRow extends Component {
     return (
       <tr>
         <td>
-          {this.props.name}
+          {this.props.obj.name}
         </td>
         <td>
-          {this.props.quantity}
+          {this.props.obj.quantity}
         </td>
         <td>
-          <Link to={"/edit/" + this.props.obj._id} className="btn btn-primary">Edit</Link>
+          <Link to={"/fruit/" + this.props.obj.id + '/update/'} className="btn btn-primary">Edit</Link>
         </td>
         <td>
           <button onClick={this.delete} className="btn btn-danger">Delete</button>

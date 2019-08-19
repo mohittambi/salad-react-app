@@ -8,17 +8,18 @@ class Edit extends Component {
 		this.onSubmit = this.onSubmit.bind(this);
 
 		this.state = {
-			fruit_name: '',
-			fruit_quantity: ''
+			name: '',
+			quantity: ''
 		}
 	}
 
 	componentDidMount() {
-		axios.get('http://localhost:4000/fruit/edit/' + this.props.match.params.id)
+		axios.get('http://localhost:8970/fruit/' + this.props.match.params.id + '/update/')
 			.then(response => {
 				this.setState({
-					fruit_name: response.data.fruit_name,
-					fruit_quantity: response.data.fruit_quantity
+					id: response.data.Items[0].id,
+					name: response.data.Items[0].name,
+					quantity: response.data.Items[0].quantity
 				});
 			})
 			.catch(function (error) {
@@ -33,13 +34,14 @@ class Edit extends Component {
 	onSubmit(e) {
 		e.preventDefault();
 		const obj = {
-			fruit_name: this.state.fruit_name,
-			fruit_quantity: this.state.fruit_quantity
+			id: this.state.id,
+			name: this.state.name,
+			quantity: this.state.quantity
 		};
-		axios.post('http://localhost:4000/fruit/update/' + this.props.match.params.id, obj)
+		axios.post('http://localhost:8970/fruit/' + this.props.match.params.id + '/update/', obj)
 			.then(res => console.log(res.data));
 
-		this.props.history.push('/index');
+		this.props.history.push('/fruits');
 	}
 
 	render() {
@@ -47,22 +49,27 @@ class Edit extends Component {
 			<div style={{ marginTop: 10 }}>
 				<h3 align="center">Update Fruit</h3>
 				<form onSubmit={this.onSubmit}>
+					<input
+						type="hidden"
+						name="id"
+						value={this.state.id}
+					/>
 					<div className="form-group">
 						<label>Fruit Name:  </label>
 						<input
 							type="text"
-							name="fruit_name"
+							name="name"
 							className="form-control"
-							value={this.state.fruit_name}
+							value={this.state.name}
 							onChange={this.onChange}
 						/>
 					</div>
 					<div className="form-group">
 						<label>Fruit Quantity: </label>
 						<input type="text"
-							name="fruit_quantity"
+							name="quantity"
 							className="form-control"
-							value={this.state.fruit_quantity}
+							value={this.state.quantity}
 							onChange={this.onChange}
 						/>
 					</div>
