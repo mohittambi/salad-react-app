@@ -11,14 +11,24 @@ class Index extends Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
+		let data = this.props.fruits;
+		var dataToArray = Object.keys(data).map(key => {
+			return data[key];
+		});
+
 		if (nextProps.newFruit) {
-			this.props.fruits.unshift(nextProps.newFruit);
+			dataToArray.unshift(nextProps.newFruit);
 		}
 	}
 
 	tabRow() {
-		return this.props.fruits.map(function (object, i) {
-			return <TableRow name={object.fruit_name} quantity={object.fruit_quantity} obj={object} key={i} />;
+		let data = this.props.fruits;
+		var dataToArray = Object.keys(data).map(key => {
+			return data[key];
+		});
+
+		return dataToArray.map(function (object, i) {
+			return <TableRow obj={object} key={i} />;
 		});
 	}
 

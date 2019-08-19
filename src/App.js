@@ -23,13 +23,16 @@ class App extends Component {
                     <Link to={'/'} className="nav-link">Home</Link>
                   </li>
                   <li className="nav-item">
-                    <Link to={'/create/fruit'} className="nav-link">Create Fruit</Link>
+                    <Link to={'/create/fruit/'} className="nav-link">Create Fruit</Link>
                   </li>
                   <li className="nav-item">
-                    <Link to={'/create/vegetable'} className="nav-link">Create Vegetable</Link>
+                    <Link to={'/fruits/'} className="nav-link">Fruits List</Link>
                   </li>
                   <li className="nav-item">
-                    <Link to={'/index'} className="nav-link">Index</Link>
+                    <Link to={'/create/vegetable/'} className="nav-link">Create Vegetable</Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link to={'/vegetables/'} className="nav-link">Vegetables List</Link>
                   </li>
                 </ul>
               </div>
@@ -42,9 +45,10 @@ class App extends Component {
             <Switch>
               <Route exact path='/' />
               <Route path='/create/fruit' render={() => <Create type={'fruit'} />} />
-              <Route path='/create/vegetable' render={() => <Create type={'vegetable'} />} />
-              <Route path='/edit/:id' component={Edit} />
-              <Route path='/index' component={Index} />
+              <Route path='/create/vegetable/' render={() => <Create type={'vegetable'} />} />
+              <Route path='/fruit/:id/update/' component={Edit} />
+              <Route path='/fruits/' component={Index} />
+              <Route path='/vegetables/' component={Index} />
             </Switch>
           </div>
         </Router>
