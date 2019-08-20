@@ -35,9 +35,11 @@ class Edit extends Component {
 		e.preventDefault();
 		const obj = {
 			id: this.state.id,
+			typeName: 'Fruit',
 			name: this.state.name,
 			quantity: this.state.quantity
 		};
+
 		axios.post('http://localhost:8970/fruit/' + this.props.match.params.id + '/update/', obj)
 			.then(res => console.log(res.data));
 
@@ -49,11 +51,6 @@ class Edit extends Component {
 			<div style={{ marginTop: 10 }}>
 				<h3 align="center">Update Fruit</h3>
 				<form onSubmit={this.onSubmit}>
-					<input
-						type="hidden"
-						name="id"
-						value={this.state.id}
-					/>
 					<div className="form-group">
 						<label>Fruit Name:  </label>
 						<input

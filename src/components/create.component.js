@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 import { createFruit } from '../actions/fruitActions';
+let uuid = require('uuid');
 
 class Create extends Component {
   constructor(props) {
@@ -24,9 +25,10 @@ class Create extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-
+    const id = uuid.v1();
     const postData = {
-      id: '104',
+      id: id,
+      typeName: 'Fruit',
       name: this.state.name,
       quantity: this.state.quantity
     };
