@@ -3,9 +3,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { Provider } from "react-redux";
 
-import Create from './components/create.component';
-import Edit from './components/edit.component';
-import Index from './components/index.component';
+import Create from './components/fruit/create.component';
+import Edit from './components/fruit/edit.component';
+import Index from './components/fruit/index.component';
+import CreateVeg from './components/vegetable/create.component';
+import EditVeg from './components/vegetable/edit.component';
+import IndexVeg from './components/vegetable/index.component';
 
 import store from "./store";
 
@@ -44,11 +47,12 @@ class App extends Component {
             <br />
             <Switch>
               <Route exact path='/' />
-              <Route path='/create/fruit' render={() => <Create type={'fruit'} />} />
-              <Route path='/create/vegetable/' render={() => <Create type={'vegetable'} />} />
-              <Route path='/fruit/:id/update/' component={Edit} />
               <Route path='/fruits/' component={Index} />
-              <Route path='/vegetables/' component={Index} />
+              <Route path='/create/fruit' render={() => <Create type={'fruit'} />} />
+              <Route path='/fruit/:id/update/' component={Edit} />
+              <Route path='/vegetables/' component={IndexVeg} />
+              <Route path='/create/vegetable/' render={() => <CreateVeg type={'vegetable'} />} />
+              <Route path='/vegetable/:id/update/' component={EditVeg} />
             </Switch>
           </div>
         </Router>

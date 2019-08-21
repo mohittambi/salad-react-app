@@ -2,10 +2,10 @@ import { FETCH_VEGETABLES, NEW_VEGETABLE } from './types';
 import axios from 'axios';
 
 export const fetchVegetables = () => dispatch => {
-  axios.get('http://localhost:4000/vegetable')
-    .then(data => dispatch({
+  axios.get('http://localhost:8970/vegetables')
+    .then(vegetables => dispatch({
       type: FETCH_VEGETABLES,
-      payload: data.data,
+      payload: vegetables.data,
     }))
     .catch(function (error) {
       console.log(error);
@@ -13,10 +13,10 @@ export const fetchVegetables = () => dispatch => {
 };
 
 export const createVegetable = (postData) => dispatch => {
-  console.log('action create vegetable');
-  axios.post('http://localhost:4000/vegetable/add', postData)
-    .then(fruit => dispatch({
+  let sendData = JSON.stringify(postData);
+  axios.post('http://localhost:8970/vegetable/create', sendData)
+    .then(vegetable => dispatch({
       type: NEW_VEGETABLE,
-      payload: fruit,
+      payload: vegetable,
     }));
 }

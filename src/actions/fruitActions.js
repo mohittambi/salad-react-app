@@ -13,9 +13,7 @@ export const fetchFruits = () => dispatch => {
 };
 
 export const createFruit = (postData) => dispatch => {
-
   let sendData = JSON.stringify(postData);
-
   axios.post('http://localhost:8970/fruit/create', sendData)
     .then(fruit => dispatch({
       type: NEW_FRUIT,

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
-import { createFruit } from '../actions/fruitActions';
+import { createVegetable } from '../../actions/vegetableActions';
 let uuid = require('uuid');
 
 class Create extends Component {
@@ -28,13 +28,13 @@ class Create extends Component {
     const id = uuid.v1();
     const postData = {
       id: id,
-      typeName: 'Fruit',
+      typeName: 'Vegetable',
       name: this.state.name,
       quantity: this.state.quantity
     };
 
     // Call Action
-    this.props.createFruit(postData);
+    this.props.createVegetable(postData);
 
     this.setState({
       name: '',
@@ -46,10 +46,10 @@ class Create extends Component {
 
     return (
       <div style={{ marginTop: 10 }}>
-        <h3 align="center">Add New Fruit</h3>
+        <h3 align="center">Add New Vegetable</h3>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
-            <label>Fruit Name:  </label>
+            <label>Vegetable Name:  </label>
             <input
               type="text"
               name="name"
@@ -59,7 +59,7 @@ class Create extends Component {
             />
           </div>
           <div className="form-group">
-            <label>Fruit Quantity: </label>
+            <label>Vegetable Quantity: </label>
             <input type="text"
               name="quantity"
               className="form-control"
@@ -69,7 +69,7 @@ class Create extends Component {
           </div>
           <div className="form-group">
             <input type="submit"
-              value="Save Fruit"
+              value="Save Vegetable"
               className="btn btn-primary" />
           </div>
         </form>
@@ -79,7 +79,7 @@ class Create extends Component {
 }
 
 Create.propTypes = {
-  createFruit: PropTypes.func.isRequired
+  createVegetable: PropTypes.func.isRequired
 }
 
-export default connect(null, { createFruit })(Create);
+export default connect(null, { createVegetable })(Create);
