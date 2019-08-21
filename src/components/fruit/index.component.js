@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchFruits } from "../actions/fruitActions";
+import { fetchFruits } from "../../actions/fruitActions";
 import TableRow from './TableRow';
 
 class Index extends Component {
